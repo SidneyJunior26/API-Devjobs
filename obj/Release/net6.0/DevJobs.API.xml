@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DevJobs.API</name>
+    </assembly>
+    <members>
+        <member name="M:DevJobs.API.Controllers.JobApplicationsController.Post(System.Int32,DevJobs.API.Models.AddJobApplicationInputModel)">
+            <summary>
+            Cadastrar aplicação de vaga.
+            </summary>
+            <remarks>
+            {
+             "applicantName": "Sidney Junior",
+             "applicantEmail": "sidneyemail@gmail.com",
+             "idVacancy": 1
+            }
+            </remarks>
+            <param name="id">Id da vaga que vai aplicar.</param>
+            <param name="model">Dados do usuário.</param>
+            <returns>Retorna o Objeto recém-criado.</returns>
+            <response code="201">Aplicação cadastrada com sucesso.</response>
+            <response code="400">Dados Inválidos.</response>
+        </member>
+        <member name="M:DevJobs.API.Controllers.JobVacanciesController.GetAll">
+            <summary>
+            Consulta de todas as vagas.
+            </summary>
+            <returns>Retorna os dados de todas as vagas.</returns>
+        </member>
+        <member name="M:DevJobs.API.Controllers.JobVacanciesController.GetById(System.Int32)">
+            <summary>
+            Consulta uma vaga específica pelo Id.
+            </summary>
+            <param name="id">Código(Id) da vaga.</param>
+            <returns>Retorna os dados da vaga.</returns>
+        </member>
+        <member name="M:DevJobs.API.Controllers.JobVacanciesController.Post(DevJobs.API.Models.AddJobVacancyInputModel)">
+            <summary>
+            Cadastrar vaga de emprego.
+            </summary>
+            <remarks>
+            {
+             "title": "Desenvolvedor .NET Jr",
+             "description": "Vaga para sustenção back end de aplicações .NET Core.",
+             "company": "Nome da Empresa",
+             "isRemote": True,
+             "salaryRange": "3000 - 5000"
+            }
+            </remarks>
+            <param name="model">Dados da Vaga.</param>
+            <returns>Retorna o Objeto recém-criado.</returns>
+            <response code="201">Vaga cadastrada com sucesso.</response>
+            <response code="400">Dados Inválidos.</response>
+        </member>
+        <member name="M:DevJobs.API.Controllers.JobVacanciesController.Put(System.Int32,DevJobs.API.Models.UpdateVacancyInputModel)">
+            <summary>
+            Atualizar vaga de emprego.
+            </summary>
+            <remarks>
+            {
+             "title": "Desenvolvedor .NET Jr",
+             "description": "Vaga para sustenção back end de aplicações .NET Core.",
+             "isRemote": True,
+             "salaryRange": "3000 - 5000"
+            }
+            </remarks>
+            <param name="id">Código(Id) da vaga.</param>
+            <param name="model">Dados da Vaga</param>
+            <response code="200">Vaga atualizada com sucesso.</response>
+            <response code="204">Dados não localizados.</response>
+        </member>
+    </members>
+</doc>
