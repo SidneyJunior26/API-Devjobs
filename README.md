@@ -19,5 +19,6 @@ API REST completa de gerenciamento de vagas de emprego e aplicação de vagas.
 
 * `Cadastro de Vagas`
 * `Cadastro de Aplicações de Vagas`
+* `Exclusão de Vagas`
 * `Listagem de Vagas`
 * `Listagem de Aplicações`
