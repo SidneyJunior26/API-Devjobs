@@ -57,7 +57,7 @@ namespace DevJobs.API.Controllers
         ///  "title": "Desenvolvedor .NET Jr",
         ///  "description": "Vaga para sustenção back end de aplicações .NET Core.",
         ///  "company": "Nome da Empresa",
-        ///  "isRemote": True,
+        ///  "isRemote": true,
         ///  "salaryRange": "3000 - 5000"
         /// }
         /// </remarks>
@@ -79,7 +79,7 @@ namespace DevJobs.API.Controllers
             );
 
             if (jobVacancy.Title.Length > 30)
-            return BadRequest("Título da vaga precisa ter menos de 30 caracteres");
+                return BadRequest("Título da vaga precisa ter menos de 30 caracteres");
 
             _repository.Add(jobVacancy);
 
@@ -96,7 +96,7 @@ namespace DevJobs.API.Controllers
         /// {
         ///  "title": "Desenvolvedor .NET Jr",
         ///  "description": "Vaga para sustenção back end de aplicações .NET Core.",
-        ///  "isRemote": True,
+        ///  "isRemote": true,
         ///  "salaryRange": "3000 - 5000"
         /// }
         /// </remarks>
@@ -118,6 +118,28 @@ namespace DevJobs.API.Controllers
             _repository.Update(jobVacancy);
 
             return NoContent();
+        }
+
+        /// <summary>
+        /// Deletar vaga de emprego
+        /// </summary>
+        /// <param name="id">Id da vaga.</param>
+        /// <response code="202">Vaga deletada com sucesso.</response>
+        /// <response code="204">Dados não localizados.</response>
+        /// <returns></returns>
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            Log.Information("Delete Job Vacancy chamado");
+
+            var jobVacancy = _repository.GetById(id);
+
+            if (jobVacancy == null)
+                return NotFound();
+
+            _repository.Delete(jobVacancy);
+
+            return Ok(jobVacancy);
         }
     }
 }

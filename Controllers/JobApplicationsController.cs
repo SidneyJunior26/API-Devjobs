@@ -11,10 +11,12 @@ namespace DevJobs.API.Controllers
     [ApiController]
     public class JobApplicationsController : ControllerBase
     {
-        private readonly IJobVacancyRepository _repository;
-        public JobApplicationsController(IJobVacancyRepository repository)
+        private readonly IJobApplicationRepository _repository;
+        private readonly IJobVacancyRepository _repositoryVacancy;
+        public JobApplicationsController(IJobApplicationRepository repository, IJobVacancyRepository repositoryVacancy)
         {
             _repository = repository;
+            _repositoryVacancy = repositoryVacancy;
         }
 
         /// <summary>
@@ -35,7 +37,7 @@ namespace DevJobs.API.Controllers
         [HttpPost]
         public IActionResult Post(int id, AddJobApplicationInputModel model)
         {
-            var jobVacancy = _repository.GetById(id);
+            var jobVacancy = _repositoryVacancy.GetById(id);
 
             if (jobVacancy == null)
                 return NotFound();
@@ -46,9 +48,25 @@ namespace DevJobs.API.Controllers
                 id
             );
 
-            _repository.AddApplication(application);
+            _repository.Add(application);
 
-            return NoContent();
+            return Ok(application);
+        }
+
+        /// <summary>
+        /// Consulta aplicação de vaga pelo Id.
+        /// </summary>
+        /// <param name="id">Id da aplicação</param>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult GetById(int id)
+        {
+            var jobApplication = _repository.GetById(id);
+
+            if (jobApplication == null)
+                return NotFound();
+
+            return Ok(jobApplication);
         }
     }
 }

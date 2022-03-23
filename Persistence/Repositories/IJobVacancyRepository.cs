@@ -8,6 +8,6 @@ namespace DevJobs.API.Persistence.Repositories
         JobVacancy GetById(int id);
         void Add(JobVacancy jobVacancy);
         void Update(JobVacancy jobVacancy);
-        void AddApplication(JobApplication jobApplication);
+        void Delete(JobVacancy jobVacancy);
     }
 }

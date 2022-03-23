@@ -17,10 +17,10 @@ namespace DevJobs.API.Persistence.Repositories
             _context.SaveChanges();
         }
 
-        public void AddApplication(JobApplication jobApplication)
+        public void Delete(JobVacancy jobVacancy)
         {
-            _context.JobApplications.Add(jobApplication);
-            _context.SaveChanges();
+           _context.JobVacancies.Remove(jobVacancy);
+           _context.SaveChanges();
         }
 
         public List<JobVacancy> GetAll()
